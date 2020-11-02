@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+</head>
+<body>
+    {% if username %}
+        <h1>欢迎<span style="color: aquamarine">{{ username }}</span>访问</h1>
+    {% else %}
+    <h1>未知用户</h1>
+    {% endif %}<br>
+    <a href="/logout">点击退出</a><br>
+</body>
+</html>

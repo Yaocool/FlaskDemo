@@ -1,0 +1,8 @@
+# python 虚拟环境
+venv/
+
+# pycache
+__pycache__/
+
+# logs
+*.log

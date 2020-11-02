@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+    <script>
+        window.onload = function () {
+            document.getElementById("code").onclick = function() {
+                this.src = "/getCaptcha?time=" + new Date().getTime();
+            }
+        }
+</script>
+</head>
+<body>
+    <div align="center">
+        <form name="form1" method="post" action="/login">
+            USERNAME:<input name="username" type="text" placeholder="请输入用户名" style="height: 20px"><br><br>
+            PASSWORD:<input name="pwd" type="password" placeholder="请输入密码" style="height: 20px"><br><br>
+            <input name="code" type="text" style="height: 20px" placeholder="请输入验证码">
+            <img id="code" src="/getCaptcha" οnclick="this.src='/getCaptcha?'+Math.random()" width="70px" height="40px">
+            <br><br>
+            <input type="submit" value="登录">
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+</head>
+<body>
+    {% if message %}
+    <h1>error message: {{ message }}</h1>
+    {% else %}
+    <h1>there's an error happened just now but we will fix</h1>
+    {% endif %}
+    <a href="javascript:void(0);" onclick="history.back()">click to go back</a>
+</body>
+</html>
