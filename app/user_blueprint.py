@@ -1,7 +1,7 @@
 import os
 
-from flask import (Flask, url_for, render_template,
-                   request, session, redirect, make_response)
+from flask import (Flask, url_for, render_template, request,
+                   session, redirect, make_response)
 from sqlalchemy.orm import sessionmaker
 
 from db.users import Users, engine
@@ -24,13 +24,16 @@ def login():
     username = request.form.get("username")
     pwd = request.form.get('pwd', None)
     code = request.form.get('code', None)
-    # 判断各项数据是否为空，通常前端会做这类判断并且验证数据格式，但是重要数据后端依然要做验证，防止恶意数据
+    # 判断各项数据是否为空，通常前端会做这类判断并且验证数据格式，
+    # 但是重要数据后端依然要做验证，防止恶意数据
     if not (username and pwd and code):
         return redirect(url_for('error_page',
                                 message='username, password or code cannot be none'))
     """
-    先判断验证码是否正确，不正确则打回（先判断原因：减少访问数据库次数，削减数据库压力，减少不必要的资源浪费）
-    正常的业务逻辑是在用户输入用户名或者密码或者验证码后使用ajax 或者axios 等发送异步请求查询是否有该用户，没有则局部刷新给用户提示信息
+    先判断验证码是否正确，
+    不正确则打回（先判断原因：减少访问数据库次数，削减数据库压力，减少不必要的资源浪费）
+    正常的业务逻辑是在用户输入用户名或者密码或者验证码后,
+    使用ajax 或者axios 等发送异步请求查询是否有该用户，没有则局部刷新给用户提示信息
     而不是现在这样直接打到错误页面，用户体验极差
     """
     if code == session['code']:
@@ -92,5 +95,4 @@ def test_get_captcha():
     response.headers['Content-Type'] = 'image/gif'
     # 存入session
     session["code"] = code
-    print(code)
     return response
